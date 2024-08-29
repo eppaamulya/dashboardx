@@ -1,10 +1,9 @@
 import './index.css';
-import Sidebar from '../Sidebar';
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Cell, } from 'recharts';
 
-
+import { useState, useEffect } from 'react';
 
 const data = [
     { name: '6/30/2024 - 7/6/2024', orders: 4, sales: 1404 },
@@ -34,10 +33,43 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, ind
 
 
 const Home = () => {
+    const [chartHeight, setChartHeight] = useState(300); // Default height
+
+    const handleResize = () => {
+        if (window.innerWidth <= 768) {
+            setChartHeight(200); // Set to smaller height on small devices
+        } else {
+            setChartHeight(300); // Default height on large devices
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Initial check
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const [chartHeight2, setChartHeight2] = useState(400); // Default height
+
+    const handleResize2 = () => {
+        if (window.innerWidth <= 768) {
+            setChartHeight2(300); // Smaller height on small devices
+        } else {
+            setChartHeight2(400); // Default height on large devices
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('resize', handleResize2);
+        handleResize2(); // Initial check
+
+        return () => window.removeEventListener('resize', handleResize2);
+    }, []);
+
 
     return (
-        <div className='home-bg'>
-            <Sidebar />
+        
             <div className='home-cont'>
                 <div className='home-cont-top'>
                     <h2 className='top-head'>Dashboard</h2>
@@ -48,7 +80,7 @@ const Home = () => {
                             <h1 className='bottom-head'>Sales vs Orders</h1>
                             <IoIosInformationCircleOutline className='cont-icon' />
                         </div>
-                        <LineChart width={650} height={300} data={data}  margin={{top: 50, right: 30, left: 20, bottom: 5, }}> 
+                        <LineChart width={650} height={chartHeight} data={data}  margin={{top: 50, right: 30, left: 20, bottom: 5, }}> 
                             <CartesianGrid strokeDasharray="1 1" />
                             <XAxis dataKey="name" />
                             <YAxis yAxisId="left" />
@@ -64,7 +96,7 @@ const Home = () => {
                             <h1 className='bottom-head'>Portion of Sales</h1>
                             <IoIosInformationCircleOutline className='cont-icon' />
                         </div>
-                        <ResponsiveContainer width="100%" height={400}>
+                        <ResponsiveContainer width="100%" height={chartHeight2}>
                             <PieChart>
                             <Pie
                                 data={data2}
@@ -89,9 +121,8 @@ const Home = () => {
                         
                     </div>
                 </div>
-            </div>
-            
-        </div>
+            </div>    
+       
     )
 
 }

@@ -15,11 +15,20 @@
 
 }
 
+.dash-listy {
+    list-style-type: none;
+    margin: 15px;
+    color: rgb(165, 153, 237);
+    font-weight: 500;
+   
+}
+
 .dash-list-item {
     list-style-type: none;
     margin: 15px;
     color: rgb(165, 153, 237);
     font-weight: 500;
+    text-decoration: none;
 
 }
 
@@ -27,14 +36,21 @@
     list-style-type: none;
     margin-top: 10px;
     margin-right: 20px;
+    margin-left: 0px;
     color: rgb(144, 6, 144);
     font-weight: 500;
     background-color: rgb(242, 235, 236);
     padding: 10px 20px;
     padding-left: 16px;
+    padding-right: 80px;
+    
     border-radius: 10px;
+    text-decoration: none;
 
 }
+
+
+
 
 .dash-list-div {
     display: flex;
@@ -48,4 +64,152 @@
     color:  rgb(165, 153, 237);
     font-weight: 500;
 
+}
+
+.link-el {
+    text-decoration: none;
+}
+
+/* Default Sidebar Styles */
+.aside-div {
+    width: 250px;
+    background-color: #f4f4f4;
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Menu Bar Styles for Small Devices */
+.menu-bar {
+    display: none;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Sidebar Hidden on Small Devices */
+.aside-div {
+    transform: translateX(-250px);
+}
+
+/* Sidebar Visible on Small Devices */
+.aside-div.open {
+    transform: translateX(0);
+}
+
+/* Responsive Styles */
+@media (min-width: 769px) {
+    /* Sidebar always visible on large devices */
+    .aside-div {
+        transform: translateX(0);
+    }
+
+    /* Hide the menu bar on large devices */
+    .menu-bar {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Hide sidebar initially on small devices */
+    .menu-bar {
+        display: block;
+    }
+
+    /* Adjust the main content when the sidebar is toggled */
+    .aside-div.open {
+        transform: translateX(0);
+    }
+}
+
+/* Default Sidebar Styles */
+.aside-div {
+    width: 250px;
+    background-color: #f4f4f4;
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000; /* Ensure sidebar overlays content */
+}
+
+/* Close Button Styles */
+.close-btn {
+    display: none;
+    font-size: 30px;
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+    text-align: right;
+}
+
+/* Menu Bar Styles for Small Devices */
+.menu-bar {
+    display: none;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Sidebar Hidden on Small Devices */
+.aside-div {
+    transform: translateX(-250px);
+}
+
+/* Sidebar Visible on Small Devices */
+.aside-div.open {
+    transform: translateX(0);
+}
+
+/* Responsive Styles */
+@media (min-width: 769px) {
+    /* Sidebar always visible on large devices */
+    .aside-div {
+        transform: translateX(0);
+    }
+
+    /* Hide the menu bar and close button on large devices */
+    .menu-bar, .close-btn {
+        display: none;
+    }
+
+    /* Adjust the main content to prevent collision with the sidebar */
+    .content {
+        margin-left: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Hide sidebar initially on small devices */
+    .menu-bar {
+        display: block;
+    }
+
+    /* Show close button inside sidebar on small devices */
+    .aside-div.open .close-btn {
+        display: block;
+    }
+
+    /* Adjust the main content when the sidebar is toggled */
+    .content {
+        margin-left: 0;
+        padding-top: 50px; /* Ensure content doesn't collide with fixed sidebar */
+    }
+
+    /* Sidebar overlays content on small devices */
+    .aside-div.open {
+        position: fixed;
+        z-index: 1000;
+        transform: translateX(0);
+        width: 250px;
+    }
 }

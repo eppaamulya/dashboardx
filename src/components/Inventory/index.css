@@ -1,0 +1,17 @@
+.home-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+    
+}
+.main-heading {
+    margin-top: 100px;
+    font-size: 25px;
+    text-align: center;
+    font-family: sans-serif;
+    color: rgb(144, 6, 144);
+    
+}
