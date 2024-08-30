@@ -85,7 +85,7 @@
     /* width: 50vw; */
 }
 
-@media screen  and (max-width: 769px){
+@media screen and (max-width: 769px){
     .home-cont-1 {
         background-color: white;
         margin-top: 0px;
@@ -122,3 +122,14 @@
     margin-left: 10px;
 }
 
+.content {
+    margin-left: 270px;
+}
+
+
+@media screen and (max-width: 769px){
+    .content {
+        padding: 20px;
+        margin-left: 0px;
+    }
+}
