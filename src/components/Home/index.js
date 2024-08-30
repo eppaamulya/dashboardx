@@ -3,7 +3,6 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Cell, } from 'recharts';
 
-import { useState, useEffect } from 'react';
 
 const data = [
     { name: '6/30/2024 - 7/6/2024', orders: 4, sales: 1404 },
@@ -33,96 +32,59 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, ind
 
 
 const Home = () => {
-    const [chartHeight, setChartHeight] = useState(300); // Default height
-
-    const handleResize = () => {
-        if (window.innerWidth <= 768) {
-            setChartHeight(200); // Set to smaller height on small devices
-        } else {
-            setChartHeight(300); // Default height on large devices
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Initial check
-
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    const [chartHeight2, setChartHeight2] = useState(400); // Default height
-
-    const handleResize2 = () => {
-        if (window.innerWidth <= 768) {
-            setChartHeight2(300); // Smaller height on small devices
-        } else {
-            setChartHeight2(400); // Default height on large devices
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener('resize', handleResize2);
-        handleResize2(); // Initial check
-
-        return () => window.removeEventListener('resize', handleResize2);
-    }, []);
-
 
     return (
-        
-            <div className='home-cont'>
-                <div className='home-cont-top'>
-                    <h2 className='top-head'>Dashboard</h2>
-                </div>
-                <div className='home-cont-bottom'>
-                    <div className='home-cont-1'>
-                        <div className='cont-1'>
-                            <h1 className='bottom-head'>Sales vs Orders</h1>
-                            <IoIosInformationCircleOutline className='cont-icon' />
-                        </div>
-                        <LineChart width={650} height={chartHeight} data={data}  margin={{top: 50, right: 30, left: 20, bottom: 5, }}> 
-                            <CartesianGrid strokeDasharray="1 1" />
-                            <XAxis dataKey="name" />
-                            <YAxis yAxisId="left" />
-                            <YAxis yAxisId="right" orientation="right" />
-                            <Tooltip />
-                            <Legend />
-                            <Line yAxisId="left" type="monotone" dataKey="sales" stroke="rgb(31, 196, 199)" activeDot={{ r: 8 }} />
-                            <Line yAxisId="right" type="monotone" dataKey="orders" stroke="Orange" activeDot={{ r: 8 }} />  
-                        </LineChart>    
+        <div className='home-cont'>
+            <div className='home-cont-top'>
+                <h2 className='top-head'>Dashboard</h2>
+            </div>
+            <div className='home-cont-bottom'>
+                <div className='home-cont-1'>
+                    <div className='cont-1'>
+                        <h1 className='bottom-head'>Sales vs Orders</h1>
+                        <IoIosInformationCircleOutline className='cont-icon' />
                     </div>
-                    <div className='home-cont-2'>
-                        <div className='cont-1'>
-                            <h1 className='bottom-head'>Portion of Sales</h1>
-                            <IoIosInformationCircleOutline className='cont-icon' />
-                        </div>
-                        <ResponsiveContainer width="100%" height={chartHeight2}>
-                            <PieChart>
-                            <Pie
-                                data={data2}
-                                dataKey="value"
-                                nameKey="name"
-                                cx="50%"
-                                cy="50%"
-                                outerRadius={100}
-                                fill="#8884d8"
-                                label={renderCustomizedLabel}
-                                labelLine={false}
+                    <LineChart width={650} height={400} data={data}  margin={{top: 50, right: 30, left: 20, bottom: 5, }}> 
+                        <CartesianGrid strokeDasharray="1 1" />
+                        <XAxis dataKey="name" />
+                        <YAxis yAxisId="left" />
+                        <YAxis yAxisId="right" orientation="right" />
+                        <Tooltip />
+                        <Legend />
+                        <Line yAxisId="left" type="monotone" dataKey="sales" stroke="rgb(31, 196, 199)" activeDot={{ r: 8 }} />
+                        <Line yAxisId="right" type="monotone" dataKey="orders" stroke="Orange" activeDot={{ r: 8 }} />  
+                    </LineChart>    
+                </div>
+                <div className='home-cont-2'>
+                    <div className='cont-1'>
+                        <h1 className='bottom-head'>Portion of Sales</h1>
+                        <IoIosInformationCircleOutline className='cont-icon' />
+                    </div>
+                    <ResponsiveContainer width="100%" height={400}>
+                        <PieChart>
+                        <Pie
+                            data={data2}
+                            dataKey="value"
+                            nameKey="name"
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={100}
+                            fill="#8884d8"
+                            label={renderCustomizedLabel}
+                            labelLine={false}
 
-                            >
-                                {data.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                ))}
-                            </Pie>
-                            <Tooltip />
-                            <Legend />
-                            </PieChart>
-                        </ResponsiveContainer>
-                        
-                    </div>
+                        >
+                            {data.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                        </Pie>
+                        <Tooltip />
+                        <Legend />
+                        </PieChart>
+                    </ResponsiveContainer>   
                 </div>
-            </div>    
-       
+            </div>
+        </div>   
     )
 
 }
