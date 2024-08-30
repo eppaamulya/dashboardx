@@ -92,43 +92,43 @@
 
 
 
-    .menu-btn {
-        display: none;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        cursor: pointer;
-        font-size: 30px;
-        margin-top: 300px;
-    }
+.menu-btn {
+    display: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 30px;
+    margin-top: 300px;
+}
+
+
+.aside-div {
+    transform: translateX(-270px);
+}
+
+
+.aside-div.open {
+    transform: translateX(0);
+}
 
     
+@media screen and (min-width: 769px) {
+
     .aside-div {
-        transform: translateX(-270px);
-    }
-
-
-    .aside-div.open {
         transform: translateX(0);
     }
 
     
-    @media screen and (min-width: 769px) {
-        /* Sidebar always visible on large devices */
-        .aside-div {
-            transform: translateX(0);
-        }
-    
-        /* Hide the menu bar and close button on large devices */
-        .menu-btn, .close-btn {
-            display: none;
-        }
-    
-        /* Adjust the main content to prevent collision with the sidebar */
-        .content {
-            margin-left: 250px;
-        }
+    .menu-btn, .close-btn {
+        display: none;
     }
+
+    
+    .content {
+        margin-left: 250px;
+    }
+}
 
 @media screen and (max-width: 769px) {
    
@@ -150,18 +150,6 @@
           
     }
 
-
-
-    /* .menu-icon {
-        background-color: black;
-        width: 100px;
-        color: black;
-        padding: 20px;
-        text-align: center;
-        cursor: pointer;
-        font-size: 30px;
-
-    } */
 
     .aside-div.open .close-btn {
         display: block;

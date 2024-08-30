@@ -29,7 +29,7 @@ const Sidebar = () => {
                         <IoMdClose />
                     </div>
                     <ul className='dash-list'>
-                        <li className='dash-listy'><NavLink to='/home'  className={({ isActive }) => isActive ? 'dash-list-item-0' : 'dash-list-item'}> Dashboard</NavLink></li>
+                        <li className='dash-listy'><NavLink to='/'  className={({ isActive }) => isActive ? 'dash-list-item-0' : 'dash-list-item'}> Dashboard</NavLink></li>
                         <li className='dash-listy'><NavLink to='/inventory' className={({ isActive }) => isActive ? 'dash-list-item-0' : 'dash-list-item'}> Inventory</NavLink></li>
                         <li className='dash-listy'><NavLink to='/orders' className={({ isActive }) => isActive ? 'dash-list-item-0' : 'dash-list-item'}>Order</NavLink></li>
                         <li className='dash-listy'><NavLink to='/returns' className={({ isActive }) => isActive ? 'dash-list-item-0' : 'dash-list-item'}>Returns</NavLink></li>
